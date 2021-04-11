@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section class = "product_product_grid">
+        
+            <section>
+                 {% set image = product['image_url'] %}
+                <img src = "{{ url_for('static', filename = image )}}" alt = "A picture of a {{product['name']}}"/>
+            </section>
+            
+            <section class = "product_info">
+                <section>
+                    <h2>{{product["name"]}}</h2>
+                    {% if average_rating %}
+                        <section class = "stars">
+                            {% for i in range(average_rating) %}
+                                <img src = "{{url_for('static', filename = 'star-full.svg')}}">
+                            {% endfor %}
+
+                            {% for i in range(5 - average_rating) %}
+                                <img src = "{{url_for('static', filename = 'star-empty.svg')}}">
+                            {% endfor %}
+                        </section>
+                    {% endif %}
+
+                    <p class = "visible"><a href = "{{url_for('reviews' , product_id = product['product_id'] )}}">View Reviews</a></p>
+
+                </section>
+                
+                <section>
+                    <p class = "price">&euro;{{product["price"]}}</p>
+                    <p>{{product["description"]}}</p>
+                </section>
+               
+    
+                <form action = "" method = "POST" novalidate>
+                    {{form.hidden_tag()}}
+                    
+                    {{form.size.label}}
+                    {{form.size()}}
+                    <br/>
+                    {% for error in form.size.errors %}
+                        {{error}}
+                    {% endfor %}
+                    <br/>
+
+                    {{form.quantity.label}}
+                    {{form.quantity()}}
+                    <br/>
+                    {% for error in form.quantity.errors %}
+                        {{error}}
+                    {% endfor %}
+                   <br/>
+                   
+                    {{form.submit()}}
+                </form>
+                
+                
+            </section>  
+    </section>
+
+    <section class = "shop_product_grid">
+        <h2>Products You May Also Like</h2>
+        {% for product in products %}
+            <section class = "product_card">
+                <img src = "{{ url_for('static', filename = product['image_url'] )}}" alt = "A picture of a {{product['name']}}"/>
+                <h2>{{product["name"]}}</h2>
+                <p>&euro;{{product["price"]}}</p>
+                <p>
+                    <a class = "button" href = "{{ url_for('product', product_id = product['product_id'] ) }}">View This Product</a>
+                </p>               
+            </section>
+        {% endfor %}
+    </section>
+    
+{% endblock %}

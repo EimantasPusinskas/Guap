@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8">
+        <title></title>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename = 'styles.css')}}"/>
+    </head>
+
+    <body>
+        <header>
+            <!--<h1 class = "logo">Guap</h1>--->
+            <img class = "logo" src = "{{url_for('static', filename = 'logo.png')}}"> 
+            
+            <nav>
+                <ul>
+                    <li>
+                        <a href = "{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li>
+                        <a href = "{{ url_for('shop') }}">Shop</a>
+                    </li>
+                    {% if g.user %}
+                        <li>
+                            <a href = "{{ url_for('cart') }}">My Cart</a>
+                        </li>
+                        <li>
+                            <a href = "{{url_for('account')}}">My Account</a>
+                        </li>
+                        <li>
+                            <a href = "{{ url_for('logout') }}">Log Out</a>
+                        </li> 
+                    {% elif g.admin %}
+                        <li>
+                            <a href = "{{ url_for('admin') }}">Admin</a>
+                        </li>
+                        <li>
+                            <a href = "{{ url_for('logout') }}">Log Out</a>
+                        </li> 
+                    {% else %}
+                        <li class = "login">
+                            <a href = "{{ url_for('login') }}">Log In</a>
+                        </li> 
+                        <li>
+                            <a href = "{{ url_for('register') }}">Register</a>
+                        </li>   
+                    {% endif %}
+                    
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            {% block main_content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+
+        </footer>
+    </body>
+</html>
