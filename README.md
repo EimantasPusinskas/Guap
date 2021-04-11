@@ -26,8 +26,8 @@ Guap is an e-commerce website that sells clothes.
 # Technologies Used
 * HTML
 * CSS
-* Python
 * SQLite
+* Python
 * Flask
 * WTForms
 * Jinja2
