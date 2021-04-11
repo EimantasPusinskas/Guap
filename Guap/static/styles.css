@@ -1,0 +1,442 @@
+
+@font-face{
+    font-family: 'Roboto', sans-serif;
+    src:url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')format("woff2")
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+img{
+    width:100%;
+}
+
+html{
+    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:white;
+    height: 7.5%;
+    margin-top: 0%;
+    width: 100%;
+    padding: 1% 0%;
+    box-shadow: lightgrey 0px 5px 5px;
+}
+
+header img{
+    max-width: 10%;
+    margin-left: 5%;
+}
+
+header h1 {
+    display: grid;
+    align-content: center;
+    justify-content: start;
+    margin-left: 5%;
+
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+    column-gap:5%;
+}
+
+nav ul li{
+    margin-right: 5%;
+}
+ 
+.shop_grid{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    justify-items: center;
+    margin-top: 2.5%;
+}
+
+.shop_grid form{
+    width: 100%;
+    padding-left: 10%;
+}
+
+.shop_grid form > *{
+    margin-bottom: 5%;
+}
+
+.shop_grid form input#submit{
+    display: inline;
+}
+
+.shop_product_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    row-gap: 5%;
+    margin: 5%;
+}
+
+.product_card{
+    text-align: center;
+    box-shadow: -10px 10px 10px lightgrey;
+    background-color: #E5E5E5;
+
+}
+
+.product_card > h2{
+    margin: 5%;
+}
+
+.product_product_grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin:5% 2% 0% 2%;
+    background-color:#E5E5E5;
+    box-shadow: -15px -15px 10px lightgray;
+}
+
+.product_product_grid h2{
+    text-align: left;
+}
+
+.product_info > *{
+    margin: 5% 5% 10% 5%;
+}
+
+.product_product_grid form{
+    margin-top: 20%;
+}
+
+.product_product_grid form > *{
+    margin-top: 5%;
+}
+
+.product_product_grid select#quantity{
+    width: 50%;
+    height: 2em;
+    
+}
+
+.product_product_grid #submit{
+    width: 100%;
+    height: 2em;
+    border-radius: 20px;
+    font-size: 1.5em;
+    background-color: #D0AC4C;
+}
+
+select#quantity, #submit ,#submit1, #submit2, #submit3{
+    box-shadow: -5px -5px lightgray;
+}
+
+
+*{
+    font-size: 20px;
+}
+
+.product_product_grid h2{
+    font-size: 2em;
+}
+.price{
+    font-size: 1.5em;
+}
+
+#log h2, #reg h2{
+    font-size: 1.5em;
+}
+
+
+.catalogue{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2%;
+    row-gap: 2%;
+}
+
+.main_pic, .catalogue > section{
+    position: relative;
+}
+
+.main_pic > section, .catalogue > section > section{
+    position: absolute;
+    bottom: 40%;
+    left: 10%;
+    color: white;
+}
+
+.main_pic p{
+    padding-top: 5%;
+    font-size: 1.25em;
+}
+
+.catalogue p{
+    padding-top: 5%;
+    font-size: 1em;
+}
+
+.main_pic h2{
+    font-size: 2em;
+}
+
+.catalogue h2{
+    font-size: 1.5em;
+}
+
+.main_pic a, .catalogue a{
+    border: 1px solid black;
+    padding: 5%;
+    color: black;
+    background-color: #D0AC4C;
+}
+
+#log{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    margin: 5%; 
+}
+
+#reg{
+    margin: 5% 15%;
+}
+
+#reg form > *{
+    text-align: center;
+    display: block;
+    margin: 2.5% auto;
+}
+
+#reg h2{
+    padding-top: 2.5%;
+}
+
+#log > *, #reg > *,  .account form, #admin form, #reviews form{
+    background-color: #e5e5e5;
+}
+
+#log form > *, .account form > *, #admin form > *{
+    text-align:center;
+    display: block;
+    margin: 5% auto;
+}
+
+input{
+    background-color:#f2f2f2;
+    border: 0px solid black;
+    border-bottom:1px solid black;
+    box-shadow: -2px -2px lightgrey;
+    
+}
+
+input#submit, input#submit1, input#submit2, input#submit3{
+    background-color: #D0AC4C;
+    display: block;
+    margin: 5% auto;
+    width: 50%;
+    height: 2em;
+}
+
+
+#cart, .account{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 5%;
+    margin: 5% 5% 10% 5%;
+}
+
+#cart_table, #checkout, #admin > form, #reviews > form{
+    background-color:#E5E5E5;
+    box-shadow:-15px -15px 10px lightgray;
+    margin-top: 5%;
+}
+
+tr{
+    border-bottom: 1px solid black;
+}
+
+th{
+    background-color: darkgrey;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    background-color:#E5E5E5;
+    box-shadow:-15px -15px 10px lightgray;
+}
+
+table tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+table tr:hover{
+    background-color: #D0AC4C;
+}
+
+table caption{
+    margin: 2%;
+    font-size: 1.25em;
+}
+
+td, th{
+    padding: 2.5% 10%;
+}
+
+.button{
+    display: block;
+    border: 1px solid black;
+    color:black;
+    background-color: #D0AC4C;
+    width: 80%;
+    margin: 10% auto;
+    padding: 5% 10%;
+    text-align: center;
+}
+
+h2,h3{
+    text-align: center;
+} 
+
+
+#admin{
+    margin: 0% 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+
+#orders{
+    grid-column: 1/3;
+}
+
+#reviews{
+    margin: 0% 10%;
+}
+
+input#review{
+    width: 75%;
+    height: 3em;
+    font-size: 1em;
+}
+
+.stars{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-right: 75%;
+}
+
+
+li{
+    list-style-type: none;
+}
+.shop_grid li:hover{
+    color: #D0AC4C;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link, a:visited{
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color:#D0AC4C;
+}
+
+a.button:hover, .visible a:hover{
+    color:black;
+    text-decoration: underline;
+}
+
+.product_card:hover{
+    transform: scale(1.05);
+}
+
+
+#reviews form{
+    margin: 0% 25%;
+    text-align: center;
+}
+
+#reviews > *{
+    margin: 10%;
+}
+
+#reviews form ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1%;
+}
+
+#review_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+
+#review_grid h2, .shop_product_grid h2{
+    grid-column: 1/4;
+}
+
+#review_grid section{
+    background-color: #e5e5e5;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5%;
+    background-color:#E5E5E5;
+    box-shadow:-5px -5px 5px lightgray;
+    margin-top: 5%;
+}
+
+textarea{
+    resize: none;
+    width: 90%;
+}
+
+#admin nav{
+    grid-column: 1/3;
+}
+
+#admin, #reviews{
+    margin-top: 5%;
+}
+
+#admin nav ul{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 0%;
+    background-color: lightgray;
+    border: 1px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-collapse: collapse;
+    box-shadow: lightgray -10px -10px 10px;
+}
+
+
+#admin nav ul li{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid black;
+    padding: 5%;
+    background-color: #e5e5e5;
+}
+
+#orders, #ords{
+    grid-column: 1/3;
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section class = "shop_grid">
+        <form action = "" method = "POST" novalidate>
+            {{form.hidden_tag()}}
+            
+            <section>
+                {{form.gender.label}}
+                {{form.gender()}}
+                {% for error in form.gender.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>
+                {{form.category.label}}
+                {{form.category()}}
+                {% for error in form.category.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            {{form.submit()}}
+        </form> 
+
+        <section class = "shop_product_grid">
+            {% for product in products %}
+                <section class = "product_card">
+                    <img src = "{{ url_for('static', filename = product['image_url'] )}}" alt = "A picture of a {{product['name']}}"/>
+                    <h2>{{product["name"]}}</h2>
+                    <p>&euro;{{product["price"]}}</p>
+                    <p>
+                        <a class = "button" href = "{{ url_for('product', product_id = product['product_id'] ) }}">View This Product</a>
+                    </p>               
+                </section>
+            {% endfor %}
+        </section>
+    </section>
+
+{% endblock %}

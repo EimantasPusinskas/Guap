@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id = "admin"> 
+        <nav class = "visible"><h2>Admin Page Nav</h2>
+            <ul>
+                <li>
+                    <a href = "#upd_prod_stock">Update Stock</a>
+                </li>
+                <li>
+                    <a href = "#rem_prod">Remove Product</a>
+                </li>
+                <li>
+                    <a href = "#add_prod">Add Product</a>
+                </li>
+                <li>
+                    <a href = "#prod_stock">Product Stock</a>
+                </li>
+                <li>
+                    <a href = "#leave_msg">Leave A Message</a>
+                </li>
+                <li>
+                    <a href = "#msg">Messages</a>
+                </li>
+                <li>
+                    <a href = "#ords">Orders</a>
+                </li>
+            </ul>
+        </nav>
+        
+
+
+        <form action = "{{url_for('update_quantity')}}" method = "POST" novalidate id = "upd_prod_stock">
+            {{form.hidden_tag()}}
+
+            <h2>Update Product Stock</h2>
+            
+            <section>
+                {{form.id.label}}
+                {{form.id()}}
+                {% for error in form.id.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+            
+            <section>   
+                {{form.quantity.label}}
+                {{form.quantity()}}
+                {% for error in form.quantity.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>   
+                {{form.size.label}}
+                {{form.size()}}
+                {% for error in form.size.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+            
+            {{form.submit1()}}
+        </form>
+    
+
+ 
+
+    
+        <form action = "{{url_for('remove_product')}}" method = "POST" novalidate id = "rem_prod">
+            {{removeProductForm.hidden_tag()}}
+
+            <h2>Remove Product</h2>
+            
+            <section>  
+                {{removeProductForm.product_id.label}}
+                {{removeProductForm.product_id()}}
+                {% for error in removeProductForm.product_id.errors %}
+                    {{error}}
+                {% endfor %} 
+             </section>
+
+            {{removeProductForm.submit2()}}
+        </form>
+    
+
+
+    
+        <form action = "{{url_for('add_product')}}" method = "POST"  enctype="multipart/form-data" novalidate id = "add_prod">
+            {{addProductForm.hidden_tag()}}
+
+            <h2>Add Product To Database</h2>
+
+            <section>
+                {{addProductForm.name.label}}
+                {{addProductForm.name()}}
+                {% for error in addProductForm.name.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+            
+            <section>
+                {{addProductForm.price.label}}
+                {{addProductForm.price()}}
+                {% for error in addProductForm.price.errors %}
+                    {{error}}
+                {% endfor %} 
+            </section>
+           
+            <section>
+                {{addProductForm.description.label}}
+                {{addProductForm.description()}}
+                {% for error in addProductForm.description.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>
+                {{addProductForm.category.label}}
+                {{addProductForm.category()}}
+                {% for error in addProductForm.category.errors %}
+                    {{error}}
+                {% endfor %} 
+            </section>
+
+            <section>
+                {{addProductForm.gender.label}}
+                {{addProductForm.gender()}}
+                {% for error in addProductForm.gender.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            
+            <section>
+                {{addProductForm.image.label}}
+                {{addProductForm.image()}}
+                {% for error in addProductForm.image.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+            
+            {{addProductForm.submit3()}}
+        </form>
+
+        <table id = "prod_stock">
+            <caption>Product Stock</caption>
+            <tr>
+                <th>Product ID</th>
+                <th>Size</th>
+                <th>Quantity</th>
+            </tr>
+            {% for product in products %} 
+                <tr>
+                    <td>{{product["product_id"]}}</td>
+                    <td>{{product["size"]}}</td>
+                    <td>{{product["quantity"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <form action = "" method = "POST" novalidate id = "leave_msg">
+            {{adminSendMessageForm.hidden_tag()}}
+            <h2>Leave A Message For A Customer</h2>
+
+            <section>
+                {{adminSendMessageForm.recipient.label}}
+                {{adminSendMessageForm.recipient()}}
+                {% for error in adminSendMessageForm.recipient.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>
+                {{adminSendMessageForm.message.label}}
+                {{adminSendMessageForm.message(placeholder = "Enter Your Message Here")}}
+                {% for error in adminSendMessageForm.message.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            {{adminSendMessageForm.submit()}}
+
+           
+        </form>
+
+        <section id = "msg">
+            <table>
+                <caption>Messages</caption>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Sender</th>
+                    <th>Message</th>
+                </tr>
+
+                {% for row in messages %}
+                    <tr>
+                        <td>{{row["date_sent"]}}</td>
+                        <td>{{row["sender"]}}</td>
+                        <td>{{row["message"]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </section>
+
+        <section id = "ords">  
+            <table>
+                <caption>All Orders</caption>
+                {% if orders %}
+                    <tr>
+                        <th>Username</th>
+                        <th>Product ID</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Date Of Order</th>
+                        <th>Order Cost</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{order["username"]}}</td>
+                            <td>{{order["product_id"]}}</td>
+                            <td>{{order["product_size"]}}</td>
+                            <td>{{order["product_quantity"]}}</td>
+                            <td>{{order["date_of_order"]}}</td>
+                            <td>&euro;{{order["order_cost"]}}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %} 
+                    <tr>
+                        <td>You Have No Orders</td>
+                    </tr>
+                {% endif %}
+            </table>
+            
+            {% if total_income %}
+                {% for income in total_income %}
+                    <p>Total Income: &euro;{{income|round(2)}}</p>
+                {% endfor %}
+            {% else %} 
+
+            {% endif %}
+        </section>
+
+
+
+    </section>
+
+{% endblock %}

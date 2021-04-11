@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id = "reg">
+
+        <form action = "" method = "POST" novalidate>
+            {{customerForm.hidden_tag()}}
+
+            <h2>Customer Registration</h2>
+
+            <section>
+                {{customerForm.username1.label}}
+                {{customerForm.username1()}}
+                <br/>
+                {% for error in customerForm.username1.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>
+                {{customerForm.password1.label}}
+                {{customerForm.password1()}}
+                <br/>
+                {% for error in customerForm.password1.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            <section>
+                {{customerForm.password1B.label}}
+                {{customerForm.password1B()}}
+                <br/>
+                {% for error in customerForm.password1B.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+        
+            {{customerForm.submit1()}}
+        </form>
+        
+    </section>
+{% endblock %}

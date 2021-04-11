@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id = "log">
+
+        <form action = "{{ url_for('customer_login')}}" method = "POST" novalidate>
+            {{customerForm.hidden_tag()}}
+
+            <h2>Customer Log In</h2>
+            
+            <section>
+                {{customerForm.username1.label}}
+                {{customerForm.username1()}}
+                <br/>
+                {% for error in customerForm.username1.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+    
+            <section>
+                {{customerForm.password1.label}}
+                {{customerForm.password1()}}
+                <br/>
+                {% for error in customerForm.password1.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+
+            {{customerForm.submit1()}} 
+            
+            <section>
+                 <p class = "visible">Don't have an account? Register <a href = "{{url_for('register')}}">here</a>.</p>
+            </section>
+        </form>
+
+        <form action = "{{ url_for('admin_login')}}" method = "POST" novalidate>
+            {{adminForm.hidden_tag()}}
+
+            <h2>Admin Log In</h2>
+            
+    
+            <section>
+                {{adminForm.username2.label}}
+                {{adminForm.username2()}}
+                <br/>
+                {% for error in adminForm.username2.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+            
+            <section>
+                {{adminForm.password2.label}}
+                {{adminForm.password2()}}
+                <br/>
+                {% for error in adminForm.password2.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>
+              
+            <section>
+                {{adminForm.secret_code.label}}
+                {{adminForm.secret_code()}}
+                <br/>
+                {% for error in adminForm.secret_code.errors %}
+                    {{error}}
+                {% endfor %}
+            </section>           
+            
+            {{adminForm.submit2()}}
+        </form>
+
+    </section>
+{% endblock %}
+ 

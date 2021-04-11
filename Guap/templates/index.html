@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section class = "home_page">
+
+        <section class = "main_pic">
+            <img src = "{{ url_for('static', filename = '1.jpg') }}" alt = ""/>
+            <section>
+                <h2>Welcome To Guap</h2>
+                <p class = "visible"><a href = "{{url_for('shop')}}">Shop Now</a></p>
+            </section>    
+        </section>
+        
+        <section class = "shop_product_grid">
+            <h2>Our Most Popular Products</h2>
+            {% for product in products %}
+                <section class = "product_card">
+                    <img src = "{{ url_for('static', filename = product['image_url'] )}}" alt = "A picture of a {{product['name']}}"/>
+                    <h2>{{product["name"]}}</h2>
+                    <p>&euro;{{product["price"]}}</p>
+                    <p>
+                        <a class = "button" href = "{{ url_for('product', product_id = product['product_id'] ) }}">View This Product</a>
+                    </p>               
+                </section>
+            {% endfor %}
+        </section>
+
+
+        <section class = "catalogue">
+            
+            <section>
+                <img src = "{{ url_for('static', filename = '4.jpg')}}" alt = ""/>
+                <section>
+                    <h2>Men's Clothing</h2>
+                    <form action = "{{url_for('shop')}}" method = "POST" novalidate>
+                        {{mensForm.hidden_tag()}}
+                        {{mensForm.submit()}}
+                    </form>
+                </section>
+            </section>
+            
+            <section>
+                <img src = "{{ url_for('static', filename = '5.jpg')}}" alt = ""/>
+                <section>
+                    <h2>Women's Clothing</h2>
+                    <form action = "{{url_for('shop')}}" method = "POST" novalidate>
+                        {{womensForm.hidden_tag()}}
+                        {{womensForm.submit()}}
+                    </form>
+                </section>
+            </section>
+            
+        </section>
+
+    </section>
+   
+{% endblock %}
+
