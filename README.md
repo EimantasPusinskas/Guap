@@ -8,7 +8,8 @@ Guap is an e-commerce website that sells clothes.
 * Logged-out Customers can;
   * View products
   * See product reviews
-  * Create an account/ Log-In
+  * Create an account
+  * Log-In
  
 * Logged-In Customers can;
   * Add products to their cart
