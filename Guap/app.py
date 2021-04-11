@@ -1,25 +1,3 @@
-""" 
-    My website has two types of users; regular users and administrators
-    To use the website as a regular user, you may register with you own username and password and then simply log-in
-    To use the website an admin, go to the log-in page and use the following info to log-in:
-        Username: admin1
-        Password: THE_passworD
-        Secret Code: 6789998212    
-"""
-
-"""
-    I used the Flask documentation, WTForms documentation and Jinja2 documentation for help on a few occasions 
-    Source 1: https://flask.palletsprojects.com/en/1.1.x/
-    Source 2: https://wtforms.readthedocs.io/en/2.3.x/
-    Source 3: https://jinja.palletsprojects.com/en/2.11.x/
-
-    I used some code from the following three sources to figure out how to allow the user to upload a secure file:
-    Source 4: https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/#uploading-files
-    Source 5: https://blog.miguelgrinberg.com/post/handling-file-uploads-with-flask
-    Source 6: https://flask-wtf.readthedocs.io/en/stable/form.html    
-"""
-
-
 from flask import Flask, render_template, request, make_response, session, redirect, url_for, g 
 from flask_session import Session
 from database import get_db, close_db
@@ -407,9 +385,7 @@ def remove_product():
         db.commit()
     return redirect(url_for('admin'))
 
-#This route allows the admin to add a brand new product
-#This route worked perfectly on my local host server but it does not work on the cs1.ucc.ie server
-#I assume this has something to do either with Filezilla's security or simply me not understanding how Filezilla works
+#Allows the admin to add a brand new product to the website
 @app.route("/add_product", methods = ["GET", "POST"])
 @login_required_admin
 def add_product():
